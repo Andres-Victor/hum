@@ -1,0 +1,154 @@
+.js_alert__container
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #00000048;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+    animation: appear 0.2s linear;
+}
+
+@keyframes appear 
+{
+    from
+    {
+        opacity: 0;
+    }    
+    to
+    {
+        opacity: 1;
+    }
+}
+
+.js_alert__window
+{
+    position: relative;
+    background-color: white;
+    min-width: 40vh;
+    max-width: 95%;
+    max-height: 40vh;
+    border-radius: 2vh;
+    box-shadow: 1vh 1vh 1vh #00000028;
+    animation: pop_up 0.4s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 3vh;
+    padding-top: 9vh;
+    gap: 2vh;
+}
+
+.js_alert__window .title
+{
+    z-index: 1;
+    border-radius: 2vh 2vh 0vh 0vh;
+    color: white;
+    top: 0;
+    height: 7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #4285f4;
+    width: 100%;
+    position: absolute;
+}
+
+.js_alert__window.danger .title
+{
+    background-color: #f44242;
+}
+.js_alert__window.caution .title
+{
+    background-color: #e78d25;
+}
+
+.js_alert__window .content
+{
+    width: 100%;
+    max-width: 60vh;
+    max-height: 30vh;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.js_alert__window .content p
+{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vh;
+    text-wrap: pretty;
+}
+.js_alert__window .content input[type=text]
+{
+    width: 100%;
+    height: 6vh;
+    font-size: 3vh;
+    border-radius: 1vh;
+    outline: none;
+    border: none;
+    position: relative;
+    background-color: #e9e9e9;
+    text-indent: 1vh;
+}
+.js_alert__window .buttons
+{
+    height: 6.5vh;
+    width: 100%;
+    display: flex;
+    gap: 2.5vh;
+    justify-content: center;
+}
+.js_alert__window .buttons button
+{
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background-color: #4285f4;
+    color: white;
+    font-size: 3vh;
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.js_alert__window .buttons button.deny
+{
+    background-color: #f44242;
+}
+.js_alert__window .buttons button:hover
+{
+    scale: 1.03;
+}
+.js_alert__window .buttons button:active
+{
+    scale: 0.9;
+    background-color: #366fca;
+}
+.js_alert__window .buttons button.deny:active
+{
+    background-color: #c23535;
+}
+
+@keyframes pop_up 
+{
+    0%
+    {
+        scale: 0;
+    }    
+    50%
+    {
+        scale: 1.2;
+    }
+    100%
+    {
+        scale: 1;
+    }
+}

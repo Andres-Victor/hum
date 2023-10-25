@@ -1,0 +1,40 @@
+{
+  "name": "hum",
+  "version": "1.0.0",
+  "description": "Transfiere Archivos entre tus dispositivos con HUM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-packager . --platform=win32 --out ./dist --icon ./src/public/src/icons/HUM.ico --overwrite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "auto-launch": "^5.0.6",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "node-notifier": "^10.0.1",
+    "socket.io": "^4.7.2",
+    "wifi-name": "^3.1.1"
+  },
+  "devDependencies": {
+    "electron": "^27.0.1"
+  },
+  "build": {
+    "appId": "com.hum.app",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "./src/public/src/icons/HUM.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "installerIcon": "./src/public/src/icons/HUM.ico",
+      "uninstallerIcon": "./src/public/src/icons/HUM.ico",
+      "uninstallDisplayName": "HUM UNINSTALLER",
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

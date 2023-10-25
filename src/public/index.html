@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/background.css">
+    <link rel="stylesheet" href="css/glass_alert.css">
+    <link rel="shortcut icon" href="src/icons/HUM.ico" type="image/x-icon">
+    <title>HUM - Data Transfer</title>
+</head>
+<body>
+    <div class="background_area" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+        <ul class="waves">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+    </div >
+    <div class="control_panel" style="display: none;">
+        <p class="title" >HUM</p>
+        <button id="minimize_button">
+            <p>-</p>
+        </button>
+        <button id="close_button">
+            <p>X</p>
+        </button>
+
+    </div>
+    <section class="main">
+        <section class="near_users__container">
+        </section>
+        <div class="localData">
+            <p>Estas conectado a la red de transferencia</p>
+            <p class="name">Estas conectado a la red con el nombre: </p>
+        </div>
+        <div id="connection_qr"></div>
+        
+        <input type="file" id="fileInput" multiple style="display:none">
+    </section>
+</body>
+<script src="./js/js_alerts.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>const socket = io();</script>
+<script src="./js/qrcode.js"></script>
+<script src="./js/loader.js"></script>
+</html>
