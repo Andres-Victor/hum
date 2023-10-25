@@ -1,6 +1,0 @@
-dist/
-test.bat
-node_modules
-package-lock.json
-x64 installer builder.iss
-.gitignore
