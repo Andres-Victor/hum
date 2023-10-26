@@ -13,7 +13,6 @@ function createWindow (port) {
     y: height - 720,
     maximizable: false,
     resizable: false,
-    show: false,
     frame: false,
     webPreferences: {
       nodeIntegration: true

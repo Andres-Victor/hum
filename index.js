@@ -1,26 +1,36 @@
-const os = require('os');
 const wifiName = require('wifi-name');
-var AutoLaunch = require('auto-launch');
+const path = require('path');
+const AutoLaunch = require('auto-launch');
+const os = require('os');
+const networkInterfaces = os.networkInterfaces();
+var LocalStorage = require('node-localstorage').LocalStorage,
+localStorage = new LocalStorage(path.resolve(__dirname, './cache/localStorage'));
+
 var autoLauncher = new AutoLaunch({
     name: "HUM - Transferencia de Datos"
 });
 
-global.autoLauncher = autoLauncher;
 
 
-function getLocalIp()
-{
-    const networkInterfaces = os.networkInterfaces();
-      for (const name of Object.keys(networkInterfaces)) {
-        for (const net of networkInterfaces[name]) {
-          if (net.family === 'IPv4' && !net.internal) {
-            return net.address;
-          }
+let localIP;
+
+for (const name of Object.keys(networkInterfaces)) {
+    for (const net of networkInterfaces[name]) {
+        if (net.family === 'IPv4' && !net.internal) {
+            localIP = net.address;
+            break;
         }
-      }
+    }
 }
 
-let localIP = getLocalIp();
+if(!localStorage.getItem('alreday_started'))
+{
+    autoLauncher.enable();
+    localStorage.setItem('alreday_started', true)
+}
+
+global.autoLauncher = autoLauncher;
+
 let startWifi = wifiName.sync()
 const port = process.env.PORT || 50205;
 const server_direction = `http://${localIP}:${port}`
@@ -30,7 +40,7 @@ setInterval(async () => {
   {
     restart();
   }
-}, 10000);
+}, 60000);
 
 const funnyNames = [
     "Pepito Piscinas",
@@ -48,9 +58,9 @@ const funnyNames = [
 const server = require("./src/bin/scripts/server")(port, sendFile, ()=>{console.log('Server started at: '+server_direction)});
 const window = require("./src/bin/scripts/window")(port);
 const socket = require("socket.io");
-const path = require('path');
 const fs = require('fs');
 const { get } = require('https');
+const { PassThrough } = require('stream');
 const io = socket(server.server)
 
 const transference_path = path.resolve(__dirname,"./src/public/transference_files/");
